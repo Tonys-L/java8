@@ -17,10 +17,11 @@ import java.util.stream.Stream;
 public class Demo1 {
     public static void main(String[] args) throws IOException {
         String content = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/java8.iml")), StandardCharsets.UTF_8);
-
+        System.out.println(content);
         List<String> words = Arrays.asList(content.split("[\\P{L}]+"));
         int count = 0;
         for (String word : words) {
+            System.out.println(word);
             if (word.length() > 12) {
                 count++;
             }
