@@ -1,4 +1,4 @@
-package com.lt.java8.strream;
+package com.lt.java8.strream.chapter2;
 
 import java.util.stream.Stream;
 
@@ -34,5 +34,8 @@ public class FilterMapFlatMap {
 
         Object[] objects = Stream.iterate(1, p -> p * 2).peek(e -> System.out.println("fetch" + e)).limit(20).toArray();
 
+        for (Object object : objects) {
+            System.out.println(object.toString());
+        }
     }
 }

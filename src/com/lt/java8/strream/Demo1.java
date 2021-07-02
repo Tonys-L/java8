@@ -3,11 +3,9 @@ package com.lt.java8.strream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * @author ：Tony.L
@@ -32,13 +30,15 @@ public class Demo1 {
         ).count();
 
         //并行计算
-        long cc = words.parallelStream().filter(word -> word.length() > 12).count();
+        long cc = words.parallelStream().filter(word -> {
+            System.out.println("=====" + Thread.currentThread().getId());
+            return word.length() > 12;
+        }).count();
 
         System.out.println(count);
 
         System.out.println(c);
 
         System.out.println(cc);
-
     }
 }

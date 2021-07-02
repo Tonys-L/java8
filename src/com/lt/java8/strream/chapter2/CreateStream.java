@@ -1,4 +1,4 @@
-package com.lt.java8.strream;
+package com.lt.java8.strream.chapter2;
 
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -33,11 +33,19 @@ public class CreateStream {
         Stream<String> stream3 = Stream.generate(() -> "123");
 
         Stream<Double> stream4 = Stream.generate(Math::random);
+        stream4.forEach((s)->{
+            System.out.println(s);
+        });
+
         /**
          * 创建0，1，2，3，4。。。。的无限序列
          */
         Stream<BigInteger> stream5 = Stream.iterate(BigInteger.ZERO, n -> n.add(BigInteger.ONE));
-        System.out.println(stream5.filter(n->n.intValue()>0).findFirst().get().intValue());
+        System.out.println(stream5.filter(n->{
+            System.out.println("==="+Thread.currentThread().getId());
+            return n.intValue() > 0;
+        }).findFirst().get().intValue());
+
 
     }
 }
